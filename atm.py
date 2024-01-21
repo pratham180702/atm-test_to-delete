@@ -1,29 +1,22 @@
-class AtmAccHolder():
+class AtmAccHolder:
     def __init__(self, name, cardNo, pin, balance):
         self.name = name
         self.cardNo = cardNo
         self.pin = pin
         self.balance = balance
+
     def deposit(self,deposit_amt):
-        account_holder.balance += deposit_amt
-        print("Balance after deposit is: ", account_holder.balance)
+        self.balance += deposit_amt
+        print("OPERATION SUCCESSFULL!")
+        print("Balance after deposit is: ", self.balance)
+    
+    def checkbalance(self):
+        print("current balance is: ", self.balance)
 
-def deposit(account_holder, deposit_amt):
-    account_holder.balance += deposit_amt
-    print("Balance after deposit is: ", account_holder.balance)
-
-
-def withdrawal(account_holder, withdraw_amt):
-    if withdraw_amt < account_holder.balance:
-        account_holder.balance -= withdraw_amt
-        print("Amount to collect: ", withdraw_amt)
-        print("Remaining balance is: ", account_holder.balance)
-    else:
-        print("Sorry, you do not have enough bank balance")
-
-
-def checkbalance(account_holder):
-    print("Your account's balance is: ", account_holder.balance)
+    def withdraw(self, withdraw_amt):
+        self.balance -= withdraw_amt
+        print("OPERATION SUCCESSFULL!")
+        print("Balance after withdrawl is: ", self.balance)
 
 
 # data of card holders
@@ -37,12 +30,9 @@ acc_holder_data = [
     AtmAccHolder('jaydeep', "58190720188429", 5901, 1000)
 ]
 
-# Taking input of PIN from the user
 user_pin = int(input("Please enter your 4-digit PIN correctly: "))
 
-# Check if the entered PIN is correct
 pin_correct = False
-account_holder = None
 
 for acc_holder in acc_holder_data:
     if user_pin == acc_holder.pin:
@@ -57,15 +47,24 @@ if pin_correct:
     print("3 for check balance")
     user_input = int(input("Please enter which functionality you need "))
 
-    if user_input == 1:
-        deposit_amt = int(input("Enter amount you want to deposit: "))
-        AtmAccHolder.deposit(account_holder, deposit_amt)
-    elif user_input == 2:
-        withdraw_amt = int(input("Enter amount you want to withdraw: "))
-        withdrawal(account_holder, withdraw_amt)
-    elif user_input == 3:
-        checkbalance(account_holder)
-    else:
-        print("Not a valid option.")
+    while user_input!=4:
+        if user_input == 1:
+            deposit_amt = int(input("Enter amount you want to deposit: "))
+            account_holder.deposit(deposit_amt)
+        elif user_input == 2:
+            withdraw_amt = int(input("Enter amount you want to withdraw: "))
+            acc_holder.withdraw(withdraw_amt)
+        elif user_input == 3:
+            account_holder.checkbalance()
+        else:
+            print("Not a valid option.")
+        
+        print("1 for Deposit")
+        print("2 for withdrawal")
+        print("3 for check balance")
+        user_input = int(input("Please enter which functionality you need "))
+    
+    print("THANKYOU FOR USING SAKSHI's ATM")
+
 else:
     print("Incorrect PIN. Enter a valid PIN.")
