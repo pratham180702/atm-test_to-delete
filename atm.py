@@ -45,6 +45,7 @@ if pin_correct:
     print("1 for Deposit")
     print("2 for withdrawal")
     print("3 for check balance")
+    print("4 to exit")
     user_input = int(input("Please enter which functionality you need "))
 
     while user_input!=4:
@@ -62,6 +63,7 @@ if pin_correct:
         print("1 for Deposit")
         print("2 for withdrawal")
         print("3 for check balance")
+        print("4 to exit")
         user_input = int(input("Please enter which functionality you need "))
     
     print("THANKYOU FOR USING SAKSHI's ATM")
